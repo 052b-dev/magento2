@@ -640,14 +640,8 @@ define([
         _displayRegularPriceBlock: function (optionId) {
             var shouldBeShown = true;
 
-            _.each(this.options.settings, function (element) {
-                if (element.value === '') {
-                    shouldBeShown = false;
-                }
-            });
-
-            if (shouldBeShown &&
-                this.options.spConfig.optionPrices[optionId].oldPrice.amount !==
+            if (typeof this.options.spConfig.optionPrices[optionId] == 'undefined' ||
+                 this.options.spConfig.optionPrices[optionId].oldPrice.amount !==
                 this.options.spConfig.optionPrices[optionId].finalPrice.amount
             ) {
                 $(this.options.slyOldPriceSelector).show();
